@@ -2,6 +2,9 @@
 
 웹페이지에 포함된 다운로드 링크를 검색하고, 링크에 표시된 텍스트를 파일명으로 저장하는 Windows GUI 프로그램입니다.
 
+<img width="300" height="200" alt="스크린샷 2026-10-12 011514" src="https://github.com/user-attachments/assets/e99f9ef1-7667-48a9-b32d-9d7878a16659" />
+
+
 ## 주요 기능
 
 - 웹페이지 URL에서 다운로드 링크 검색
