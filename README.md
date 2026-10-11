@@ -1,6 +1,6 @@
-# 링크 텍스트 파일 다운로더
+# Web Downloader
 
-웹페이지에 포함된 다운로드 링크를 검색하고, 링크에 표시된 텍스트를 파일명으로 저장하는 Python GUI 프로그램입니다.
+웹페이지에 포함된 다운로드 링크를 검색하고, 링크에 표시된 텍스트를 파일명으로 저장하는 Windows GUI 프로그램입니다.
 
 ## 주요 기능
 
@@ -10,23 +10,11 @@
 - 저장 폴더 지정 및 설정 저장
 - 기존 파일 건너뛰기, 다운로드 결과 로그 확인
 
-## 설치 및 실행
+## 실행 방법 (일반 사용자)
 
-**Python 3 설치가 필요합니다.** Windows에서는 `start.vbs`를 더블 클릭하면 됩니다.
+배포된 `web-downloader.exe`를 더블 클릭하면 됩니다. **Python을 별도로 설치할 필요가 없습니다.**
 
-- Python 3 설치 여부를 확인합니다 (`py -3` 또는 `python`).
-- `requests`, `beautifulsoup4` 및 `tkinter`를 불러올 수 있는지 확인합니다.
-- 필요한 외부 패키지가 없으면 `pip`으로 자동 설치를 시도합니다. 설치 시 인터넷 연결이 필요할 수 있습니다.
-- 확인이 끝나면 콘솔 창 없이 GUI를 실행합니다.
-
-직접 실행하려면 다음 명령어를 사용하세요.
-
-```bash
-python -m pip install requests beautifulsoup4
-python downloader_gui.py
-```
-
-> `tkinter`는 일반적인 Windows Python 설치에 포함됩니다. Python 자체는 자동 설치되지 않으며, 패키지 설치에 실패하거나 `tkinter`가 없는 경우 오류 안내가 표시됩니다.
+설정은 실행 파일과 같은 폴더의 `downloader_settings.json`에 저장됩니다. 설정을 저장하려면 해당 폴더에 쓰기 권한이 있어야 합니다.
 
 ## 사용 방법
 
@@ -36,13 +24,34 @@ python downloader_gui.py
 4. 검색 결과에서 **전체 다운로드** 또는 **선택 다운로드**를 누릅니다.
 5. 하단 로그에서 다운로드 결과를 확인합니다.
 
+## EXE 빌드 (개발자)
+
+Windows에서 Python 3 및 `pip`이 설치되어 있어야 합니다. `build_exe.bat`을 더블 클릭하면 필요한 패키지를 설치하고 PyInstaller로 실행 파일을 빌드합니다.
+
+빌드 결과는 `dist\web-downloader.exe`입니다.
+
+직접 명령어로 빌드하려면 다음을 실행하세요.
+
+```bat
+python -m pip install pyinstaller requests beautifulsoup4
+python -m PyInstaller --noconfirm --clean --onefile --windowed --name web-downloader downloader_gui_exe.py
+```
+
+소스 코드를 직접 실행하려면 다음을 사용하세요.
+
+```bat
+python -m pip install requests beautifulsoup4
+python downloader_gui_exe.py
+```
+
 ## 파일 구성
 
 | 파일 | 설명 |
 | --- | --- |
-| `downloader_gui.py` | GUI 및 다운로드 기능 |
-| `start.vbs` | Python·필수 패키지 확인 및 자동 설치 후 GUI 실행 (Windows) |
-| `downloader_settings.json` | 저장 폴더 및 확장자 설정 |
+| `downloader_gui_exe.py` | GUI 및 다운로드 기능을 구현한 Python 소스 |
+| `build_exe.bat` | Windows EXE 자동 빌드 스크립트 |
+| `dist/web-downloader.exe` | 빌드 후 생성되는 배포용 실행 파일 |
+| `downloader_settings.json` | 실행 시 생성되는 사용자 설정 파일 |
 
 ## 참고 사항
 
@@ -50,3 +59,4 @@ python downloader_gui.py
 - 확장자 필터는 실제 다운로드 URL이 아닌 **링크 텍스트**를 기준으로 적용됩니다.
 - 로그인이나 JavaScript 실행이 필요한 페이지에서는 링크를 찾지 못할 수 있습니다.
 - 같은 이름의 파일이 이미 있으면 덮어쓰지 않고 건너뜁니다.
+- EXE는 Windows에서 빌드해야 하며, 일부 PC에서는 보안 소프트웨어가 처음 실행하는 파일을 검사할 수 있습니다.
