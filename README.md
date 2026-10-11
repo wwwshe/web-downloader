@@ -12,14 +12,21 @@
 
 ## 설치 및 실행
 
-Python 3이 필요합니다.
+**Python 3 설치가 필요합니다.** Windows에서는 `start.vbs`를 더블 클릭하면 됩니다.
+
+- Python 3 설치 여부를 확인합니다 (`py -3` 또는 `python`).
+- `requests`, `beautifulsoup4` 및 `tkinter`를 불러올 수 있는지 확인합니다.
+- 필요한 외부 패키지가 없으면 `pip`으로 자동 설치를 시도합니다. 설치 시 인터넷 연결이 필요할 수 있습니다.
+- 확인이 끝나면 콘솔 창 없이 GUI를 실행합니다.
+
+직접 실행하려면 다음 명령어를 사용하세요.
 
 ```bash
-pip install requests beautifulsoup4
+python -m pip install requests beautifulsoup4
 python downloader_gui.py
 ```
 
-Windows에서는 `start.vbs`를 더블 클릭해 콘솔 창 없이 실행할 수도 있습니다. 이 경우 `pythonw.exe`가 실행 가능한 환경이어야 합니다.
+> `tkinter`는 일반적인 Windows Python 설치에 포함됩니다. Python 자체는 자동 설치되지 않으며, 패키지 설치에 실패하거나 `tkinter`가 없는 경우 오류 안내가 표시됩니다.
 
 ## 사용 방법
 
@@ -34,7 +41,7 @@ Windows에서는 `start.vbs`를 더블 클릭해 콘솔 창 없이 실행할 수
 | 파일 | 설명 |
 | --- | --- |
 | `downloader_gui.py` | GUI 및 다운로드 기능 |
-| `start.vbs` | Windows용 간편 실행 스크립트 |
+| `start.vbs` | Python·필수 패키지 확인 및 자동 설치 후 GUI 실행 (Windows) |
 | `downloader_settings.json` | 저장 폴더 및 확장자 설정 |
 
 ## 참고 사항
